@@ -1,26 +1,29 @@
 import React from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
-import Sidebar from './Sidebar';
-import AdminSidebar from './AdminSidebar';
-import ClientSidebar from './ClientSidebar';
+import { Outlet, Navigate } from 'react-router-dom';
+import { useAuthStore } from '../../store/authStore';
 import Header from './Header';
+import AdminSidebar from './AdminSidebar';
+import StaffSidebar from './StaffSidebar';
+import ClientSidebar from './ClientSidebar';
 
 export default function DashboardLayout() {
-  const location = useLocation();
-  const isAdminRoute = location.pathname.startsWith('/admin');
-  const isClientRoute = location.pathname.startsWith('/client');
+  const { isAuthenticated, user } = useAuthStore();
 
-  const getSidebar = () => {
-    if (isAdminRoute) return <AdminSidebar />;
-    if (isClientRoute) return <ClientSidebar />;
-    return <Sidebar />;
-  };
+  if (!isAuthenticated || !user) {
+    return <Navigate to="/login" replace />;
+  }
+
+  const SidebarComponent = {
+    ADMIN: AdminSidebar,
+    STAFF: StaffSidebar,
+    CLIENT: ClientSidebar,
+  }[user.role];
 
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
       <div className="flex">
-        {getSidebar()}
+        <SidebarComponent />
         <main className="flex-1 p-6">
           <Outlet />
         </main>

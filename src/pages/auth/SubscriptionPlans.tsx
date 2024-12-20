@@ -94,9 +94,6 @@ export default function SubscriptionPlans() {
                     /month
                   </span>
                 </p>
-                <p className="mt-2 text-sm text-gray-500">
-                  Plus $10 per staff member
-                </p>
                 <Button
                   className="mt-8 w-full"
                   onClick={() => handlePlanSelection(plan)}

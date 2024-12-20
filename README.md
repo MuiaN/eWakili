@@ -9,8 +9,9 @@ eWakili is a comprehensive legal practice management solution that includes:
 ### 🔑 Core Features
 
 1. **User Management & Authentication**
-   - Multi-role support (Admin, Lawyer, Paralegal, Client, Staff)
-   - Secure authentication system
+   - Multi-role support (Admin, Staff, Client)
+   - Role-based permissions system
+   - Staff roles (Managing Partner, Lawyer, Paralegal, Secretary, Accountant)
    - User profile management
 
 2. **Case Management**
@@ -48,39 +49,45 @@ eWakili is a comprehensive legal practice management solution that includes:
    - Document analysis
    - Smart suggestions
 
+### 🆕 Latest Features Added
+
+1. **Role-Based Access Control**
+   - Granular permission system
+   - Custom staff roles with predefined permissions
+   - Dynamic sidebar navigation based on permissions
+
+2. **Multi-Dashboard Support**
+   - Admin Dashboard (full system access)
+   - Staff Dashboard (role-based access)
+   - Client Dashboard (limited access)
+
+3. **Demo Accounts**
+   - Admin: admin@ewakili.com
+   - Lawyer: lawyer@ewakili.com
+   - Paralegal: paralegal@ewakili.com
+   - Client: client@ewakili.com
+
 ### 🏗️ Technical Architecture
 
-#### Frontend Structure
 ```
 src/
 ├── components/
-│   ├── admin/        # Administrative features
-│   ├── ai/           # AI integration components
-│   ├── auth/         # Authentication components
+│   ├── admin/        # Administrative components
 │   ├── client/       # Client portal components
 │   ├── layout/       # Layout components
-│   ├── templates/    # Document template components
+│   ├── shared/       # Shared components
 │   └── ui/           # Reusable UI components
 ├── pages/
 │   ├── admin/        # Admin pages
 │   ├── auth/         # Authentication pages
 │   ├── client/       # Client portal pages
-│   └── ai/           # AI feature pages
+│   ├── staff/        # Staff pages
+│   └── shared/       # Shared pages
 ├── store/            # State management
 ├── hooks/            # Custom React hooks
 ├── types/            # TypeScript definitions
-└── config/           # Configuration files
+└── utils/           # Utility functions
 ```
-
-#### Database Schema
-- Users and authentication
-- Client management
-- Case tracking
-- Document management
-- Billing and payments
-- Calendar events
-- Task management
-- System settings
 
 ## 🛠️ Technology Stack
 
@@ -100,7 +107,6 @@ src/
 
 1. **Prerequisites**
    - Node.js (v14 or higher)
-   - XAMPP (for local development)
    - Git
 
 2. **Installation**
@@ -118,42 +124,6 @@ src/
    npm run dev
    ```
 
-3. **Database Setup**
-   - Start XAMPP
-   - Import `database_setup.sql`
-   - Configure database connection
-
-## 🔄 Current Status
-
-- ✅ Project structure setup
-- ✅ Component architecture defined
-- ✅ Database schema designed
-- ✅ Basic UI components created
-- ✅ Authentication flow structured
-- ✅ Client portal layout
-- ✅ Admin dashboard framework
-
-## 📝 Next Steps
-
-1. **Backend Integration**
-   - Set up API endpoints
-   - Implement authentication
-   - Database connection
-   - File storage system
-
-2. **Feature Implementation**
-   - Complete authentication flow
-   - Document management system
-   - Case management features
-   - Billing system
-   - Calendar integration
-
-3. **Testing & Deployment**
-   - Unit testing
-   - Integration testing
-   - Production deployment
-   - Performance optimization
-
 ## 👥 Contributing
 
 This is a private repository. Please contact the repository owner for contribution guidelines.
@@ -161,7 +131,3 @@ This is a private repository. Please contact the repository owner for contributi
 ## 📄 License
 
 Private and Confidential - All rights reserved
-
----
-
-For more information or support, contact: admin@ewakili.com 

@@ -1,64 +1,111 @@
-export type UserRole = 
-  | 'SUPER_ADMIN'
-  | 'MANAGING_PARTNER'
-  | 'DEPARTMENT_HEAD'
-  | 'SENIOR_ASSOCIATE'
-  | 'JUNIOR_LAWYER'
-  | 'PARALEGAL'
-  | 'CLIENT_RELATIONSHIP_MANAGER'
-  | 'ACCOUNTANT'
-  | 'RECEPTIONIST'
-  | 'CLIENT'
-  | 'AUDITOR';
+export type UserRole = 'ADMIN' | 'STAFF' | 'CLIENT';
 
-export type CaseStatus = 
-  | 'NEW'
-  | 'IN_PROGRESS'
-  | 'AWAITING_CLIENT_INPUT'
-  | 'UNDER_REVIEW'
-  | 'CLOSED';
+export type StaffRole = 
+  | 'MANAGING_PARTNER'
+  | 'LAWYER'
+  | 'PARALEGAL'
+  | 'SECRETARY'
+  | 'ACCOUNTANT';
+
+export interface Permission {
+  id: string;
+  name: string;
+  description: string;
+}
+
+export interface RolePermissions {
+  viewCases: boolean;
+  manageCases: boolean;
+  viewClients: boolean;
+  manageClients: boolean;
+  viewDocuments: boolean;
+  manageDocuments: boolean;
+  viewBilling: boolean;
+  manageBilling: boolean;
+  viewReports: boolean;
+  manageStaff: boolean;
+  manageRoles: boolean;
+  systemSettings: boolean;
+}
 
 export interface User {
   id: string;
   name: string;
   email: string;
   role: UserRole;
-  department?: string;
-  permissions: ClientPermissions;
+  staffRole?: StaffRole;
+  permissions: RolePermissions;
 }
 
-export interface ClientPermissions {
-  viewCases: boolean;
-  viewDocuments: boolean;
-  viewBilling: boolean;
-  viewCalendar: boolean;
-  submitDocuments: boolean;
-  communicateWithTeam: boolean;
-}
-
-export interface Case {
-  id: string;
-  title: string;
-  clientId: string;
-  status: CaseStatus;
-  assignedTo: string;
-  department: string;
-  createdAt: Date;
-  updatedAt: Date;
-  dueDate?: Date;
-}
-
-export interface Template {
-  id: string;
-  name: string;
-  department: string;
-  type: string;
-  lastModified: string;
-}
-
-export interface ClientDashboardStats {
-  activeCases: number;
-  pendingDocuments: number;
-  upcomingDeadlines: number;
-  unreadMessages: number;
-}
+export const DEFAULT_PERMISSIONS: Record<StaffRole, RolePermissions> = {
+  MANAGING_PARTNER: {
+    viewCases: true,
+    manageCases: true,
+    viewClients: true,
+    manageClients: true,
+    viewDocuments: true,
+    manageDocuments: true,
+    viewBilling: true,
+    manageBilling: true,
+    viewReports: true,
+    manageStaff: true,
+    manageRoles: true,
+    systemSettings: false,
+  },
+  LAWYER: {
+    viewCases: true,
+    manageCases: true,
+    viewClients: true,
+    manageClients: false,
+    viewDocuments: true,
+    manageDocuments: true,
+    viewBilling: true,
+    manageBilling: false,
+    viewReports: true,
+    manageStaff: false,
+    manageRoles: false,
+    systemSettings: false,
+  },
+  PARALEGAL: {
+    viewCases: true,
+    manageCases: false,
+    viewClients: true,
+    manageClients: false,
+    viewDocuments: true,
+    manageDocuments: true,
+    viewBilling: false,
+    manageBilling: false,
+    viewReports: false,
+    manageStaff: false,
+    manageRoles: false,
+    systemSettings: false,
+  },
+  SECRETARY: {
+    viewCases: true,
+    manageCases: false,
+    viewClients: true,
+    manageClients: false,
+    viewDocuments: true,
+    manageDocuments: false,
+    viewBilling: false,
+    manageBilling: false,
+    viewReports: false,
+    manageStaff: false,
+    manageRoles: false,
+    systemSettings: false,
+  },
+  ACCOUNTANT: {
+    viewCases: false,
+    manageCases: false,
+    viewClients: true,
+    manageClients: false,
+    viewDocuments: false,
+    manageDocuments: false,
+    viewBilling: true,
+    manageBilling: true,
+    viewReports: true,
+    manageStaff: false,
+    manageRoles: false,
+    systemSettings: false,
+  },
+};
