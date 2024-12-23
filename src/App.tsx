@@ -22,6 +22,18 @@ import AccessControl from './pages/admin/AccessControl';
 import SystemSettings from './pages/admin/SystemSettings';
 import SystemHealth from './pages/admin/SystemHealth';
 import AuditLogs from './pages/admin/AuditLogs';
+import Billing from './pages/admin/Billing';
+import Communications from './pages/admin/Communications';
+import BackupStorage from './pages/admin/BackupStorage';
+import Compliance from './pages/admin/Compliance';
+import DocumentTemplates from './pages/admin/DocumentTemplates';
+
+// Shared Pages
+import EWakiliAI from './pages/shared/EWakiliAI';
+import Calendar from './pages/Calendar';
+import Cases from './pages/Cases';
+import Clients from './pages/Clients';
+import Documents from './pages/Documents';
 
 // Staff Pages
 import StaffDashboard from './pages/staff/StaffDashboard';
@@ -41,9 +53,6 @@ import ClientDeadlines from './pages/client/ClientDeadlines';
 import ClientSettings from './pages/client/ClientSettings';
 import ClientSupport from './pages/client/ClientSupport';
 
-// Shared Pages
-import EWakiliAI from './pages/shared/EWakiliAI';
-
 function App() {
   const { isAuthenticated, user } = useAuthStore();
 
@@ -54,7 +63,7 @@ function App() {
         {!isAuthenticated ? (
           <>
             <Route element={<LandingLayout />}>
-              <Route index element={<Landing />} />
+              <Route path="/" element={<Landing />} />
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
@@ -70,6 +79,15 @@ function App() {
           <Route path="/admin" element={<DashboardLayout />}>
             <Route index element={<AdminDashboard />} />
             <Route path="users" element={<UserManagement />} />
+            <Route path="clients" element={<Clients />} />
+            <Route path="cases" element={<Cases />} />
+            <Route path="documents" element={<Documents />} />
+            <Route path="templates" element={<DocumentTemplates />} />
+            <Route path="billing" element={<Billing />} />
+            <Route path="communications" element={<Communications />} />
+            <Route path="backup" element={<BackupStorage />} />
+            <Route path="compliance" element={<Compliance />} />
+            <Route path="calendar" element={<Calendar />} />
             <Route path="access" element={<AccessControl />} />
             <Route path="settings" element={<SystemSettings />} />
             <Route path="health" element={<SystemHealth />} />
@@ -110,14 +128,11 @@ function App() {
         <Route
           path="*"
           element={
-            <Navigate
-              to={
-                isAuthenticated
-                  ? `/${user?.role.toLowerCase()}`
-                  : '/login'
-              }
-              replace
-            />
+            isAuthenticated ? (
+              <Navigate to={`/${user?.role.toLowerCase()}`} replace />
+            ) : (
+              <Navigate to="/" replace />
+            )
           }
         />
       </Routes>

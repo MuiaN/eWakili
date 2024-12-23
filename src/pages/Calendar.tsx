@@ -9,6 +9,11 @@ const daysInMonth = new Date(
   currentDate.getMonth() + 1,
   0
 ).getDate();
+const firstDayOfMonth = new Date(
+  currentDate.getFullYear(),
+  currentDate.getMonth(),
+  1
+).getDay();
 
 const mockEvents = [
   {
@@ -35,6 +40,11 @@ const mockEvents = [
 ];
 
 export default function Calendar() {
+  const getEventsForDay = (day: number) => {
+    const dateStr = `2024-03-${String(day).padStart(2, '0')}`;
+    return mockEvents.filter(event => event.date === dateStr);
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
@@ -72,43 +82,53 @@ export default function Calendar() {
               {day}
             </div>
           ))}
-          {Array.from({ length: daysInMonth }).map((_, index) => (
-            <div
-              key={index}
-              className="bg-white px-3 py-2 text-sm h-32 relative"
-            >
-              <time
-                dateTime={`2024-03-${index + 1}`}
-                className={`font-semibold ${
-                  index + 1 === currentDate.getDate()
-                    ? 'text-indigo-600'
-                    : 'text-gray-900'
+          
+          {/* Empty cells for days before the first day of the month */}
+          {Array.from({ length: firstDayOfMonth }).map((_, index) => (
+            <div key={`empty-${index}`} className="bg-white px-3 py-2 text-sm h-32" />
+          ))}
+
+          {/* Calendar days */}
+          {Array.from({ length: daysInMonth }).map((_, index) => {
+            const day = index + 1;
+            const dayEvents = getEventsForDay(day);
+            const isToday = day === currentDate.getDate();
+
+            return (
+              <div
+                key={day}
+                className={`bg-white px-3 py-2 text-sm h-32 relative ${
+                  isToday ? 'bg-indigo-50' : ''
                 }`}
               >
-                {index + 1}
-              </time>
-              {mockEvents
-                .filter(
-                  (event) =>
-                    new Date(event.date).getDate() === index + 1
-                )
-                .map((event) => (
-                  <div
-                    key={event.id}
-                    className={`mt-1 px-2 py-1 text-xs rounded-md ${
-                      event.type === 'meeting'
-                        ? 'bg-blue-100 text-blue-700'
-                        : event.type === 'hearing'
-                        ? 'bg-red-100 text-red-700'
-                        : 'bg-green-100 text-green-700'
-                    }`}
-                  >
-                    <p className="font-medium">{event.title}</p>
-                    <p>{event.time}</p>
-                  </div>
-                ))}
-            </div>
-          ))}
+                <time
+                  dateTime={`2024-03-${day}`}
+                  className={`font-semibold ${
+                    isToday ? 'text-indigo-600' : 'text-gray-900'
+                  }`}
+                >
+                  {day}
+                </time>
+                <div className="mt-2 space-y-1">
+                  {dayEvents.map((event) => (
+                    <div
+                      key={event.id}
+                      className={`px-2 py-1 text-xs rounded-md cursor-pointer transition-colors ${
+                        event.type === 'meeting'
+                          ? 'bg-blue-100 text-blue-700 hover:bg-blue-200'
+                          : event.type === 'hearing'
+                          ? 'bg-red-100 text-red-700 hover:bg-red-200'
+                          : 'bg-green-100 text-green-700 hover:bg-green-200'
+                      }`}
+                    >
+                      <p className="font-medium truncate">{event.title}</p>
+                      <p className="text-xs opacity-75">{event.time}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

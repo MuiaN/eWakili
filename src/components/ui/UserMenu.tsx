@@ -41,7 +41,7 @@ export default function UserMenu() {
   };
 
   return (
-    <div className="relative" ref={menuRef}>
+    <div className="relative z-50" ref={menuRef}>
       <Button
         variant="ghost"
         className="flex items-center space-x-3"
@@ -60,7 +60,7 @@ export default function UserMenu() {
       </Button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+        <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
           <div className="py-1" role="menu">
             <div className="px-4 py-2 border-b">
               <p className="text-sm font-medium text-gray-900">{user?.name}</p>
