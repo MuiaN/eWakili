@@ -51,17 +51,26 @@ eWakili is a comprehensive legal practice management solution that includes:
 
 ### 🆕 Latest Features Added
 
-1. **Role-Based Access Control**
+1. **Enhanced Admin Dashboard**
+   - Backup & Storage Management
+   - Advanced Billing System
+   - Communications Hub
+   - Compliance Monitoring
+   - Document Template Management
+   - System Health Monitoring
+   - Audit Logging
+
+2. **Role-Based Access Control**
    - Granular permission system
    - Custom staff roles with predefined permissions
    - Dynamic sidebar navigation based on permissions
 
-2. **Multi-Dashboard Support**
+3. **Multi-Dashboard Support**
    - Admin Dashboard (full system access)
    - Staff Dashboard (role-based access)
    - Client Dashboard (limited access)
 
-3. **Demo Accounts**
+4. **Demo Accounts**
    - Admin: admin@ewakili.com
    - Lawyer: lawyer@ewakili.com
    - Paralegal: paralegal@ewakili.com
