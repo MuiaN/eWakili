@@ -42,6 +42,8 @@ import StaffClients from './pages/staff/StaffClients';
 import StaffDocuments from './pages/staff/StaffDocuments';
 import StaffCalendar from './pages/staff/StaffCalendar';
 import StaffBilling from './pages/staff/StaffBilling';
+import StaffMessages from './pages/staff/StaffMessages';
+import StaffSettings from './pages/staff/StaffSettings';
 
 // Client Pages
 import ClientDashboard from './pages/client/ClientDashboard';
@@ -52,6 +54,7 @@ import ClientMessages from './pages/client/ClientMessages';
 import ClientDeadlines from './pages/client/ClientDeadlines';
 import ClientSettings from './pages/client/ClientSettings';
 import ClientSupport from './pages/client/ClientSupport';
+import ClientCalendar from './pages/client/ClientCalendar';
 
 function App() {
   const { isAuthenticated, user } = useAuthStore();
@@ -105,6 +108,8 @@ function App() {
             <Route path="documents" element={<StaffDocuments />} />
             <Route path="calendar" element={<StaffCalendar />} />
             <Route path="billing" element={<StaffBilling />} />
+            <Route path="messages" element={<StaffMessages />} />
+            <Route path="settings" element={<StaffSettings />} />
             <Route path="ai" element={<EWakiliAI />} />
           </Route>
         )}
@@ -117,6 +122,7 @@ function App() {
             <Route path="documents" element={<ClientDocuments />} />
             <Route path="billing" element={<ClientBilling />} />
             <Route path="messages" element={<ClientMessages />} />
+            <Route path="calendar" element={<ClientCalendar />} />
             <Route path="deadlines" element={<ClientDeadlines />} />
             <Route path="settings" element={<ClientSettings />} />
             <Route path="support" element={<ClientSupport />} />

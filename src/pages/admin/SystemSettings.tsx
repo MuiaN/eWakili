@@ -16,6 +16,13 @@ const defaultSettings = {
   },
   backupSchedule: 'daily',
   retentionPeriod: 90,
+  notifications: {
+    systemUpdates: true,
+    securityAlerts: true,
+    userRegistrations: true,
+    backupNotifications: true,
+    maintenanceAlerts: true,
+  }
 };
 
 export default function SystemSettings() {
@@ -144,27 +151,100 @@ export default function SystemSettings() {
 
         <div className="bg-white shadow rounded-lg p-6">
           <h3 className="text-lg font-medium text-gray-900 mb-4">
+            <Bell className="h-5 w-5 inline-block mr-2" />
             Notification Settings
           </h3>
           <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <Bell className="h-5 w-5 text-gray-400" />
-                <span className="ml-2">System Notifications</span>
-              </div>
-              <Button variant="outline" size="sm" disabled={!isEditing}>
-                Configure
-              </Button>
-            </div>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <Mail className="h-5 w-5 text-gray-400" />
-                <span className="ml-2">Email Notifications</span>
-              </div>
-              <Button variant="outline" size="sm" disabled={!isEditing}>
-                Configure
-              </Button>
-            </div>
+            <label className="flex items-center">
+              <input
+                type="checkbox"
+                checked={settings.notifications.systemUpdates}
+                onChange={(e) =>
+                  setSettings({
+                    ...settings,
+                    notifications: {
+                      ...settings.notifications,
+                      systemUpdates: e.target.checked,
+                    },
+                  })
+                }
+                disabled={!isEditing}
+                className="rounded border-gray-300 text-indigo-600"
+              />
+              <span className="ml-2">System Updates</span>
+            </label>
+            <label className="flex items-center">
+              <input
+                type="checkbox"
+                checked={settings.notifications.securityAlerts}
+                onChange={(e) =>
+                  setSettings({
+                    ...settings,
+                    notifications: {
+                      ...settings.notifications,
+                      securityAlerts: e.target.checked,
+                    },
+                  })
+                }
+                disabled={!isEditing}
+                className="rounded border-gray-300 text-indigo-600"
+              />
+              <span className="ml-2">Security Alerts</span>
+            </label>
+            <label className="flex items-center">
+              <input
+                type="checkbox"
+                checked={settings.notifications.userRegistrations}
+                onChange={(e) =>
+                  setSettings({
+                    ...settings,
+                    notifications: {
+                      ...settings.notifications,
+                      userRegistrations: e.target.checked,
+                    },
+                  })
+                }
+                disabled={!isEditing}
+                className="rounded border-gray-300 text-indigo-600"
+              />
+              <span className="ml-2">User Registrations</span>
+            </label>
+            <label className="flex items-center">
+              <input
+                type="checkbox"
+                checked={settings.notifications.backupNotifications}
+                onChange={(e) =>
+                  setSettings({
+                    ...settings,
+                    notifications: {
+                      ...settings.notifications,
+                      backupNotifications: e.target.checked,
+                    },
+                  })
+                }
+                disabled={!isEditing}
+                className="rounded border-gray-300 text-indigo-600"
+              />
+              <span className="ml-2">Backup Notifications</span>
+            </label>
+            <label className="flex items-center">
+              <input
+                type="checkbox"
+                checked={settings.notifications.maintenanceAlerts}
+                onChange={(e) =>
+                  setSettings({
+                    ...settings,
+                    notifications: {
+                      ...settings.notifications,
+                      maintenanceAlerts: e.target.checked,
+                    },
+                  })
+                }
+                disabled={!isEditing}
+                className="rounded border-gray-300 text-indigo-600"
+              />
+              <span className="ml-2">Maintenance Alerts</span>
+            </label>
           </div>
         </div>
       </div>

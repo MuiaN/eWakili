@@ -51,43 +51,17 @@ eWakili is a comprehensive legal practice management solution that includes:
 
 ### 🆕 Latest Features Added
 
-1. **Enhanced Admin Dashboard**
-   - Advanced User Management with role-based filtering
-   - Comprehensive Audit Logging system
-   - Real-time System Health monitoring
-   - Backup & Storage Management
-   - Document Template Management
-   - Compliance Monitoring with status tracking
-   - Communications Hub with email templates
+1. **Role-Based Access Control**
+   - Granular permission system
+   - Custom staff roles with predefined permissions
+   - Dynamic sidebar navigation based on permissions
 
-2. **Advanced Communication Features**
-   - Internal messaging system
-   - Email template management
-   - Automated notifications
-   - Client-staff communication portal
+2. **Multi-Dashboard Support**
+   - Admin Dashboard (full system access)
+   - Staff Dashboard (role-based access)
+   - Client Dashboard (limited access)
 
-3. **Improved Security & Compliance**
-   - Detailed compliance monitoring
-   - Document retention policies
-   - Access control audit
-   - Security status dashboard
-   - Real-time compliance alerts
-
-4. **Enhanced Client Portal**
-   - Real-time case updates
-   - Document sharing improvements
-   - Integrated billing view
-   - Deadline tracking
-   - Direct messaging with legal team
-
-5. **System Administration**
-   - Granular permission management
-   - System health monitoring
-   - Automated backup system
-   - Performance analytics
-   - Audit trail logging
-
-6. **Demo Accounts**
+3. **Demo Accounts**
    - Admin: admin@ewakili.com
    - Lawyer: lawyer@ewakili.com
    - Paralegal: paralegal@ewakili.com
@@ -157,3 +131,5 @@ This is a private repository. Please contact the repository owner for contributi
 ## 📄 License
 
 Private and Confidential - All rights reserved
+
+Open_API_Key = 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

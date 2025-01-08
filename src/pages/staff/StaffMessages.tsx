@@ -9,43 +9,50 @@ import { useAvailableUsers } from '../../hooks/useAvailableUsers';
 const mockContacts = [
   {
     id: '1',
-    name: 'Sarah Wilson',
-    role: 'Managing Partner',
-    lastMessage: 'System update scheduled for next week',
-    unread: 3,
+    name: 'John Smith',
+    role: 'Client',
+    lastMessage: 'When can we schedule a meeting?',
+    unread: 2,
   },
   {
     id: '2',
-    name: 'David Chen',
-    role: 'Senior Associate',
-    lastMessage: 'New case management features requested',
+    name: 'Sarah Wilson',
+    role: 'Managing Partner',
+    lastMessage: 'Please review the case documents',
+    unread: 1,
   },
   {
     id: '3',
-    name: 'Lisa Thompson',
-    role: 'IT Support',
-    lastMessage: 'Backup completed successfully',
+    name: 'Legal Team',
+    role: 'Group Chat',
+    lastMessage: 'Meeting notes from today\'s session',
+  },
+  {
+    id: '4',
+    name: 'Mike Johnson',
+    role: 'Paralegal',
+    lastMessage: 'Documents are ready for review',
   },
 ];
 
 const mockMessages = [
   {
     id: '1',
-    content: 'We need to discuss the new security protocols',
-    sender: 'Sarah Wilson',
-    timestamp: new Date('2024-03-15T09:30:00'),
+    content: 'Hello, I need to discuss the case updates',
+    sender: 'John Smith',
+    timestamp: new Date('2024-03-15T10:30:00'),
     isUser: false,
   },
   {
     id: '2',
-    content: 'I\'ll prepare the documentation and schedule a meeting',
+    content: 'Of course, I can help you with that',
     sender: 'You',
-    timestamp: new Date('2024-03-15T09:35:00'),
+    timestamp: new Date('2024-03-15T10:32:00'),
     isUser: true,
   },
 ];
 
-export default function Communications() {
+export default function StaffMessages() {
   const [selectedContactId, setSelectedContactId] = useState<string>();
   const [isNewMessageOpen, setIsNewMessageOpen] = useState(false);
   const availableUsers = useAvailableUsers();

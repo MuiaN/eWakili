@@ -38,7 +38,7 @@ export default function AdminSidebar() {
   const location = useLocation();
 
   return (
-    <div className="w-64 bg-white border-r border-gray-200 min-h-screen">
+    <div className="w-72 flex-shrink-0 bg-white border-r border-gray-200 min-h-screen">
       <nav className="mt-5 px-2">
         <div className="space-y-1">
           {navigation.map((item) => {
@@ -49,7 +49,7 @@ export default function AdminSidebar() {
               <NavLink
                 key={item.name}
                 to={item.href}
-                className={`group flex items-center px-2 py-2 text-sm font-medium rounded-md ${
+                className={`group flex items-center px-3 py-2.5 text-sm font-medium rounded-md whitespace-nowrap ${
                   isActive
                     ? 'bg-indigo-100 text-indigo-600'
                     : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
@@ -59,7 +59,6 @@ export default function AdminSidebar() {
                   className={`mr-3 h-5 w-5 flex-shrink-0 ${
                     isActive ? 'text-indigo-600' : 'text-gray-400'
                   }`}
-                  aria-hidden="true"
                 />
                 {item.name}
               </NavLink>
